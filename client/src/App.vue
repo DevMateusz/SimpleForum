@@ -1,47 +1,35 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+    <Header title="Everything Forum" />
+    <Forum />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
+  import Header from './components/Header.vue'
+  import Forum from './components/Forum.vue'
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+  export default {
+    components: {
+      Header,
+      Forum,
+    }
+  }
+</script>
 
-@media (min-width: 1024px) {
-  header {
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Silkscreen', cursive;
+  }
+  #app{
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+    align-items: center;
+    flex-direction: column;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
+  body {
+    background-color: rgb(49, 49, 49);
+    color: rgba(235, 235, 235, 0.64);
   }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>
