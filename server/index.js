@@ -10,30 +10,17 @@ app.use(cors());
 
 const posts = require('./routes/api/posts');
 
-// Use Routes
+
 app.use('/api/posts', posts);
 
-// Serve static assets if in production
+// Handle production
 if(process.env.NODE_ENV === 'production') {
-    // Set static folder
-    app.use(express.static('client/dist'));
+    // Static folder
+    app.use(express.static(__dirname + '/public/'));
 
-    app.get('*', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
-    });
+    // Handle SPA
+    app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
 }
-
-app.get('*', function (req, res) {    
-    const protocol = req.protocol;
-    const host = req.hostname;
-    const url = req.originalUrl;
-    const port = process.env.PORT || PORT;
-
-    const fullUrl = `${protocol}://${host}:${port}${url}`
-    
-    const responseString = `Full URL is: ${fullUrl}`;                       
-    res.send(responseString);  
-})
 
 const port = process.env.PORT || 5000;
 
