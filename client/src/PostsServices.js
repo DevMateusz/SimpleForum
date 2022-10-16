@@ -1,5 +1,5 @@
 import axios from 'axios'
-const url = 'api/posts/';
+const url = 'https://devmateusz-simpleforum.herokuapp.com/api/posts/';
 
 class PostServices {
     // GET posts
