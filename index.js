@@ -3,16 +3,23 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
-const serveStatic = require('serve-static');
-const posts = require(path.join(__dirname, './routes/api/posts'));
+
+const posts = require('./routes/api/posts');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(serveStatic(__dirname + '/client/dist'));
 
 app.use('/api/posts', posts);
+
+if(process.env.NODE_ENV === 'production') {
+    app.use(express.static('client/build'));
+
+    app.get('*', (req, res) => {
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    })
+}
 
 // Handle production
 const port = process.env.PORT || 5000;
