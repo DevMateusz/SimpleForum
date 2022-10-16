@@ -3,6 +3,8 @@ const mongodb = require('mongodb');
 
 const router = express.Router();
 
+const uri = 'mongodb+srv://admin:DhENVq3kWj5niCNs@cluster0.7oh32bl.mongodb.net/?retryWrites=true&w=majority';
+
 // GET posts
 router.get('/', async (req, res) => {
     const posts = await loadPostsCollection();
@@ -30,7 +32,7 @@ router.delete('/:id', async (req, res) => {
 })
 
 async function loadPostsCollection() {
-    const client = await mongodb.MongoClient.connect('mongodb://localhost:27017', {
+    const client = await mongodb.MongoClient.connect(uri, {
         useNewUrlParser: true
     });
 
