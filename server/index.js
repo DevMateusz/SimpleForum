@@ -33,6 +33,11 @@ if(process.env.NODE_ENV === 'production') {
         console.log(responseString);
         console.log(responseString);
         console.log(responseString);
+        console.log('test');
+        console.log('test');
+        console.log('test');
+        console.log('test');
+        console.log('test');
     });
 }
 
