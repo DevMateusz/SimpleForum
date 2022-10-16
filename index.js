@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(serveStatic(__dirname + '/dist'));
+app.use(serveStatic(__dirname + '/client/dist'));
 
 app.use('/api/posts', posts);
 
