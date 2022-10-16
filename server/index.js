@@ -20,26 +20,20 @@ if(process.env.NODE_ENV === 'production') {
 
     app.get('*', (req, res) => {
         res.sendFile(path.resolve(__dirname, 'client', 'dist', 'index.html'));
-        const protocol = req.protocol;
-        const host = req.hostname;
-        const url = req.originalUrl;
-        const port = process.env.PORT || PORT;
-
-        const fullUrl = `${protocol}://${host}:${port}${url}`
-    
-        const responseString = `Full URL is: ${fullUrl}`;                       
-        console.log(responseString);
-        console.log(responseString);
-        console.log(responseString);
-        console.log(responseString);
-        console.log(responseString);
-        console.log('test');
-        console.log('test');
-        console.log('test');
-        console.log('test');
-        console.log('test');
     });
 }
+
+app.get('*', function (req, res) {    
+    const protocol = req.protocol;
+    const host = req.hostname;
+    const url = req.originalUrl;
+    const port = process.env.PORT || PORT;
+
+    const fullUrl = `${protocol}://${host}:${port}${url}`
+    
+    const responseString = `Full URL is: ${fullUrl}`;                       
+    res.send(responseString);  
+})
 
 const port = process.env.PORT || 5000;
 
