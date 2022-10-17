@@ -34,7 +34,7 @@ export default {
 h6{
   position: absolute;
   top: 5px;
-  left: 440px;
+  left: 505px;
 }
 h4{
   padding: 10px 0px 10px 10px;
@@ -44,6 +44,7 @@ h4{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 20px;
   margin: 0px 10px;
   cursor: pointer;
 }
